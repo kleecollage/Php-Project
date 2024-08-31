@@ -23,4 +23,26 @@ function borrarErrores() {
     return $borrado;
 }
 
+function conseguirCategorias($conexion) {
+    $result = array();
+    $sql = "SELECT * FROM categorias ORDER BY id ASC";
+    $categorias = mysqli_query($conexion, $sql);
+    if ($categorias && mysqli_num_rows($categorias) >= 1) {
+        $result = $categorias;
+    }
+    return $result;
+}
+
+function conseguirUltimasEntradas($conexion) {
+    $resultado = array();
+    $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e ".
+        "INNER JOIN categorias c ON e.categoria_id = c.id ".
+        "ORDER BY e.id DESC LIMIT 4";
+    $entradas = mysqli_query($conexion, $sql);
+    if ($entradas && mysqli_num_rows($entradas) >= 1) {
+        $resultado = $entradas;
+    }
+    return $resultado;
+}
+
 ?>

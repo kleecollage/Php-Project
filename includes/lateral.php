@@ -1,8 +1,29 @@
-<?php require_once 'helpers.php'; ?>
 <!-- --------------------   BARRA LATERAL   -------------------- -->
 <aside id="sidebar">
+    <?php if(isset($_SESSION['usuario'])) : ?>
+    <div id="usuario-logueado" class="bloque">
+        <h3>
+            Bienvenid@
+            <?= $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'] ?>
+        </h3>
+        <!-- BOTONES -->
+        <a class="boton boton-verde" href="">Crear Categoria</a>
+        <a class="boton boton" href="">Otra Cosa</a>
+        <a class="boton boton-naranja" href="">Mis Datos</a>
+        <a class="boton boton-rojo" href="cerrar.php">Cerrar Sesion</a>
+    </div>
+    <?php endif; ?>
+
+    <?php if (!isset($_SESSION['usuario'])) : ?>
     <div id="login" class="bloque">
         <h3>Identificate</h3>
+
+        <?php if(isset($_SESSION['error_login'])) : ?>
+            <div class="alerta alerta-error">
+                <?= $_SESSION['error_login']?>
+            </div>
+        <?php endif; ?>
+
         <form action="login.php" method="post">
             <label for="email">Email</label>
             <input type="email" name="email" />
@@ -44,8 +65,7 @@
 
             <input type="submit" name="submit" value="Registrar" />
         </form>
-
         <?php borrarErrores(); ?>
-
     </div>
+    <?php endif; ?>
 </aside>
