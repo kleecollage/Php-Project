@@ -1,5 +1,12 @@
 <!-- --------------------   BARRA LATERAL   -------------------- -->
 <aside id="sidebar">
+    <div id="buscador" class="bloque">
+        <h3>Buscar</h3>
+        <form action="buscar.php" method="post">
+            <input type="text" name="busqueda" />
+            <input type="submit" value="Buscar" />
+        </form>
+    </div>
     <?php if(isset($_SESSION['usuario'])) : ?>
     <div id="usuario-logueado" class="bloque">
         <h3>
@@ -7,9 +14,9 @@
             <?= $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'] ?>
         </h3>
         <!-- BOTONES -->
-        <a class="boton boton-verde" href="">Crear Entrada</a>
+        <a class="boton boton-verde" href="crear-entradas.php">Crear Entrada</a>
         <a class="boton boton" href="crear-categoria.php">Crear Categoría</a>
-        <a class="boton boton-naranja" href="">Mis Datos</a>
+        <a class="boton boton-naranja" href="mis-datos.php">Mis Datos</a>
         <a class="boton boton-rojo" href="cerrar.php">Cerrar Sesion</a>
     </div>
     <?php endif; ?>

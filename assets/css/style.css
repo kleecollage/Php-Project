@@ -21,9 +21,9 @@ body{
     padding: 5px;
     font-size: 14px;
     color: white;
-    background-color: green;
+    background: green;
     box-shadow: 0 1px 3px #ccc;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-radius: 2px;
 }
 
@@ -159,7 +159,6 @@ input[type="submit"],
     margin-bottom: 5px;
     display: block;
     border-radius: 2px;
-    color: white;
     background: #007ee5;
     border: 1px solid #156785;
     cursor: pointer;
@@ -167,6 +166,7 @@ input[type="submit"],
 }
 
 .boton {
+    color: white !important;
     text-align: center;
     width: 130px;
 }

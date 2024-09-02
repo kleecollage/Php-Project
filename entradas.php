@@ -4,12 +4,12 @@
 <?php require_once 'includes/lateral.php'?>
 <!-- --------------------   CAJA PRINCIPAL   -------------------- -->
 <div id="principal">
-    <h1>Ultimas Entradas</h1>
+    <h1>Todas Las Entradas</h1>
     <?php
-        $entradas = conseguirEntradas($db, true);
-        if(!empty($entradas)):
-            while($entrada = mysqli_fetch_assoc($entradas)):
-    ?>
+    $entradas = conseguirEntradas($db);
+    if(!empty($entradas)):
+        while($entrada = mysqli_fetch_assoc($entradas)):
+            ?>
             <article>
                 <a href="entrada.php?id=<?=$entrada['id']?>">
                     <h2><?=$entrada['titulo'] ?></h2>
@@ -20,12 +20,9 @@
                 </a>
             </article>
 
-    <?php
-            endwhile;
-        endif;
+        <?php
+        endwhile;
+    endif;
     ?>
-    <div id="ver-todas">
-        <a href="entradas.php">Ver todas las entradas</a>
-    </div>
-<!-- --------------------   FOOTER   -------------------- -->
-<?php require_once 'includes/pie.php'?>
+    <!-- --------------------   FOOTER   -------------------- -->
+    <?php require_once 'includes/pie.php'?>
